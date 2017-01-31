@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaCozinha" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b22f55fe-8b42-493b-a1ac-8211cd55db39">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     Item_Pedido.`id_IP` AS Item_Pedido_id_IP,
+     Item_Pedido.`id_ped` AS Item_Pedido_id_ped,
+     Item_Pedido.`id_prod` AS Item_Pedido_id_prod,
+     Item_Pedido.`quant_IP` AS Item_Pedido_quant_IP,
+     Item_Pedido.`preco_IP` AS Item_Pedido_preco_IP,
+     Pedidos.`id_ped` AS Pedidos_id_ped,
+     Pedidos.`hora_ped` AS Pedidos_hora_ped,
+     Pedidos.`data_ped` AS Pedidos_data_ped,
+     Pedidos.`status_ped` AS Pedidos_status_ped,
+     Pedidos.`id_cli` AS Pedidos_id_cli,
+     Pedidos.`id_Mesa` AS Pedidos_id_Mesa,
+     Pedidos.`obs_ped` AS Pedidos_obs_ped,
+     Pedidos.`Total_ped` AS Pedidos_Total_ped,
+     Produto.`id_prod` AS Produto_id_prod,
+     Produto.`desc_prod` AS Produto_desc_prod,
+     Produto.`cat_prod` AS Produto_cat_prod,
+     Produto.`preco_prod` AS Produto_preco_prod,
+     Produto.`foto_prod` AS Produto_foto_prod
+FROM
+     `Pedidos` Pedidos INNER JOIN `Item_Pedido` Item_Pedido ON Pedidos.`id_ped` = Item_Pedido.`id_ped`
+     INNER JOIN `Produto` Produto ON Item_Pedido.`id_prod` = Produto.`id_prod`]]>
+	</queryString>
+	<field name="Pedidos_id_Mesa" class="java.lang.Integer"/>
+	<field name="Item_Pedido_id_prod" class="java.lang.Integer"/>
+	<field name="Item_Pedido_quant_IP" class="java.lang.Integer"/>
+	<field name="Produto_desc_prod" class="java.lang.String"/>
+	<field name="Item_Pedido_preco_IP" class="java.lang.Float"/>
+	<field name="Pedidos_obs_ped" class="java.lang.String"/>
+	<group name="Pedidos_id_Mesa">
+		<groupExpression><![CDATA[$F{Pedidos_id_Mesa}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="c50c3f64-86d1-4f6d-a9f5-c7b915e7a0c4"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Nº mesa:]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="6d968d66-fd57-41ba-8fa9-c7fdd66997a2"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Pedidos_id_Mesa}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="aa254583-8df5-4478-b306-d493540059da"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="4459c9b9-51ab-4e93-addf-4908a82520e0"/>
+				<staticText>
+					<reportElement x="120" y="20" width="350" height="43" forecolor="#FFFFFF" uuid="6e1cddc0-bc8a-48f7-b7be-10b98082c69b"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatorio Cozinha]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="6466043c-e27a-4bb2-90fd-2a5323816fbf"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="128" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5fba98fa-23a0-4286-b537-85a4ecb6e177"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="0" width="103" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7fc946dd-e468-4503-853d-4f9199ce1aea"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="231" y="0" width="209" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cb7b5528-6453-42d4-8e63-8fb2432945a9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="115" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1ccb639f-55ce-4376-949d-4d180cf3c64c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preço Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="75">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="db31ad08-6198-40b2-8c84-ac688d0a6ca4"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="128" height="20" uuid="dfaa2266-37b7-43e4-9e1b-6f862bdd69f0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item_Pedido_id_prod}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="128" y="0" width="103" height="20" uuid="39782008-07d5-44a0-81f3-1fe09296352b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item_Pedido_quant_IP}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="231" y="0" width="209" height="20" uuid="b2b9da5f-815c-43f3-bdee-5851c0f50ed0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Produto_desc_prod}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="440" y="0" width="112" height="20" uuid="96e795c2-5084-46c4-a4bc-306fc1856b55"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item_Pedido_preco_IP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="2c781cd5-b890-402f-b4e6-b8cac61f6b7c"/>
+				<text><![CDATA[OBS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="28" y="30" width="524" height="35" uuid="cbad807c-811d-4d0d-8a5f-ab2da6a40790"/>
+				<textFieldExpression><![CDATA[$F{Pedidos_obs_ped}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="28ec2150-b1d0-40f9-9c11-adb97a660548"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="d669ac80-5276-4a6c-a786-3b2b15e0b39b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="1e29c36f-a151-4230-88de-9aa69581c785"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

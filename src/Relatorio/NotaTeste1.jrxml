@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaTeste1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="caa8fc19-833f-4405-8307-d98a4ae583cc">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     *,
+     Cliente.`id_cli` AS Cliente_id_cli,
+     Cliente.`email_cli` AS Cliente_email_cli,
+     Cliente.`rg_cli` AS Cliente_rg_cli,
+     Cliente.`nome_cli` AS Cliente_nome_cli,
+     Cliente.`tel_cli` AS Cliente_tel_cli,
+     Cliente.`cpf_cli` AS Cliente_cpf_cli,
+     Pedidos.`id_ped` AS Pedidos_id_ped,
+     Pedidos.`hora_ped` AS Pedidos_hora_ped,
+     Pedidos.`data_ped` AS Pedidos_data_ped,
+     Pedidos.`status_ped` AS Pedidos_status_ped,
+     Pedidos.`id_cli` AS Pedidos_id_cli,
+     Pedidos.`id_Mesa` AS Pedidos_id_Mesa,
+     Pedidos.`obs_ped` AS Pedidos_obs_ped,
+     Pedidos.`Total_ped` AS Pedidos_Total_ped
+FROM
+     `Item_Pedido` Item_Pedido INNER JOIN `Produto` Produto ON Item_Pedido.`id_prod` = Produto.`id_prod`
+     INNER JOIN `Pedidos` Pedidos ON Item_Pedido.`id_ped` = Pedidos.`id_ped`
+     INNER JOIN `Cliente` Cliente ON Pedidos.`id_cli` = Cliente.`id_cli`]]>
+	</queryString>
+	<field name="id_prod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quant_IP" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preco_IP" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_prod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cat_prod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preco_prod" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_Mesa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cliente_nome_cli" class="java.lang.String"/>
+	<field name="Cliente_cpf_cli" class="java.lang.String"/>
+	<field name="Pedidos_hora_ped" class="java.sql.Time"/>
+	<field name="Pedidos_data_ped" class="java.lang.String"/>
+	<field name="Pedidos_id_Mesa" class="java.lang.Integer"/>
+	<field name="Pedidos_obs_ped" class="java.lang.String"/>
+	<field name="Pedidos_Total_ped" class="java.lang.Float"/>
+	<group name="id_Mesa">
+		<groupExpression><![CDATA[$F{id_Mesa}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
